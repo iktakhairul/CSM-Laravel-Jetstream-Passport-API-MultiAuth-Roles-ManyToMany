@@ -47,7 +47,6 @@
         }
         .btn-footer {
             color: grey;
-
             text-decoration: none;
             border: 1px solid;
             border-radius: 43px;
@@ -58,7 +57,6 @@
         .btn-footer:hover {
 
             text-decoration: none;
-
         }
         .form-footer input[type="text"] {
             border: none;
@@ -97,7 +95,6 @@
         footer ul  li a{
             text-decoration: none;
             color: grey;
-            text-decoration:none;
         }
         a:hover {
             text-decoration: none;

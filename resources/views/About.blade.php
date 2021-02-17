@@ -23,7 +23,7 @@
                 cursor: pointer;
                 background-color: white;
                 color: black;
-                padding-top: 20px;
+                padding-top: 30px;
                 padding-bottom: 80px;
             }
             .about h2 {

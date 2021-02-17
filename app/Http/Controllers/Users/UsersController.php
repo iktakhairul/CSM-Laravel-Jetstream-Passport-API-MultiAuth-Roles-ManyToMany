@@ -17,15 +17,36 @@ class UsersController extends Controller
         if (Gate::denies('users_view')) {
             abort(403);
         }
-        $users = User::with('role', 'cars')->get();
+
+        $users = User::with('role')->get();
+        $cars_list = User::with('cars')->get();
         $roles = Role::select('name')->get();
-        $car_model = CarList::select('car_model')->get();
+        $cars = CarList::all();
+        $add_car = User::all();
 
         return view('users.user.index', [
             'users' => $users,
             'roles' => $roles,
-            'car_model' => $car_model,
+            'cars_list' => $cars_list,
+            'cars' => $cars,
+            'add_car' => $add_car
         ]);
     }
+
+      /* Have to work here
+    public function store(){
+
+        $data = \request()->validate([
+
+            'car_id' => 'required|integer',
+
+        ]);
+
+        $add_new_car = new CarList();
+        $add_new_car->car_id = request('car_id');
+        $add_new_car->save();
+        return back();
+    }
+      */
 
 }

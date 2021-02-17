@@ -17,9 +17,11 @@
                     </x-jet-nav-link>
 
                     @if(auth()->user()->role_id == 1)
-                    <x-jet-nav-link href="{{ route('admin.user.index') }}" :active="request()->routeIs('admin.user.index')">
-                        {{ __('Admin Panel') }}
-                    </x-jet-nav-link>
+                        <x-jet-nav-link href="{{ route('admin.user.index') }}" :active="request()->routeIs('admin.user.index')">
+                            {{ __('Admin Panel') }}
+                        </x-jet-nav-link>
+
+
                     @endif
 
                     @if(auth()->user()->role_id == 2)

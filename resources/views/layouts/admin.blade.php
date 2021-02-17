@@ -21,11 +21,7 @@
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
-        <style>
-            .layout-footer-top-margin {
-                margin-top: 150px;
-            }
-        </style>
+
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />

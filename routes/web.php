@@ -18,6 +18,8 @@ Route::get('/', function () {
 });
 Route::view('About','About');
 Route::view('Contact','Contact');
+//Route::get('/register', '\App\Http\Controllers\RegisterCarListController@list');
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
@@ -37,6 +39,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::group(['middleware' => 'role:users', 'prefix' => 'users', 'as' => 'users.'], function() {
         Route::resource('user', \App\Http\Controllers\Users\UsersController::class);
     });
+
 });
 
 

@@ -42,8 +42,7 @@
             }
 
             html {
-                font-family: "Inter", sans-serif;
-                font-size: 14px;
+
                 box-sizing: border-box;
             }
 
@@ -73,8 +72,6 @@
                 border: 0;
                 margin: 2rem 0;
             }
-
-
 
             .form {
                 display: grid;
@@ -146,14 +143,15 @@
                 margin-top: 20px;
                 margin-bottom: 50px;
                 color: grey;
+                font-size:14px;
             }
 
         </style>
     </head>
     <body>
     <section class="text-center about">
-        <h2>Contact US</h1>
-        <p>Please enter your shipping details.</p>
+        <h2>Contact US</h2>
+        <p style="font-size:12px !important; font-weight:normal;">Please enter your shipping details.</p>
         <hr />
         <div class="form">
             <div class="fields fields--2">
@@ -200,7 +198,7 @@
         <div class="container address-property">
             <address>
                 ADDRESS<br>
-                32/1, Road: 3, Shyamoli, Dhaka, Dhaka 1207, Bangladesh<br>
+                32/1, Road: 3, Shyamoli, Dhaka 1207, Bangladesh<br>
                 E: support@reformedtech.org<br>
                 P: +(880) 1303094897
             </address>

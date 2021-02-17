@@ -39,4 +39,6 @@ class CreateNewUser implements CreatesNewUsers
             'employee_designation' => $input['employee_designation'] ?? null,
         ]);
     }
+
+
 }

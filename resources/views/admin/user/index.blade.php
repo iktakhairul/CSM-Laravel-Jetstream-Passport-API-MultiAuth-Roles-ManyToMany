@@ -125,7 +125,7 @@
                                                 <div class="text-sm text-gray-900">{{ $user->user_phone_number }}</div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap">
-                                                <div class="text-sm text-gray-900">{{ $user->car_model }}</div>
+                                                <div class="text-sm text-gray-900">{{ $user->id }}</div>
                                                 <div class="text-sm font-medium text-gray-900">{{ $user->updated_at }}</div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
@@ -257,7 +257,7 @@
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200">
                                 <tr>
-                                    @foreach ($cars as $car)
+                                    @foreach ($users as $car)
 
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="ml-4">
@@ -266,11 +266,11 @@
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="ml-4">
-                                                <div class="text-sm font-medium text-gray-900">{{ $car->car_brand }}</div>
+                                                <div class="text-sm font-medium text-gray-900">{{ $car->id }}</div>
                                             </div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            <div class="text-sm text-gray-900">{{ $car->car_model }}</div>
+                                            <div class="text-sm text-gray-900">{{ $car->id }}</div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="text-sm text-gray-900">{{ $car->created_at }}</div>

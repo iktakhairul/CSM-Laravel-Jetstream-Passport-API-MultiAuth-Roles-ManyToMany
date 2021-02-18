@@ -26,11 +26,12 @@ use Laravel\Sanctum\HasApiTokens;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property int $role_id
- *  * @property int $car_id
- * @property string|null $car_model
- * @property string|null $user_address
- * @property string|null $user_phone_number
- * @property string|null $employee_designation
+// *  * @property int $car_id
+// *  *  * @property int $car_id2
+// * @property string|null $car_model
+// * @property string|null $user_address
+// * @property string|null $user_phone_number
+// * @property string|null $employee_designation
  * @property-read string $profile_photo_url
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
@@ -65,6 +66,8 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
 
+    public $timestamps =false;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -75,11 +78,7 @@ class User extends Authenticatable
         'email',
         'password',
         'role_id',
-        'car_id',
-        'car_model',
-        'user_address',
-        'user_phone_number',
-        'employee_designation',
+        'brand_id'
     ];
 
     /**
@@ -101,6 +100,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+
     ];
 
     /**
@@ -116,9 +116,11 @@ class User extends Authenticatable
 
         return $this->belongsTo(Role::class);
     }
-    public function cars(){
 
-        return $this->belongsTo(CarList::class,'car_id');
+    public function brands(){
+
+        return $this->belongsToMany(Brand::class, 'ownerships',
+            'user_id', 'brand_id');
     }
 
 }

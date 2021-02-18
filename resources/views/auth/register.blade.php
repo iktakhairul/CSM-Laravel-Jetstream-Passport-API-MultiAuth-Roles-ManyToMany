@@ -37,6 +37,7 @@
                     <x-jet-label for="role_id" value="{{ __('Register as:') }}" />
                     <select name="role_id" x-model="role_id" required class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
                         <option selected>Select</option>
+                        <option value="2">Employee</option>
                         <option value="3">User</option>
                     </select>
                 </div>
@@ -46,10 +47,10 @@
                     <x-jet-input id="employee_designation" class="block mt-1 w-full" type="text" :value="old('employee_designation')" name="employee_designation" />
                 </div>
 
-                <div class="mt-4">
+                <div class="mt-4" x-show="role_id == 3">
                     <x-jet-label for="car_id" value="{{ __('Car Model (Optional)') }}" />
                     <select name="car_id" x-model="car_id" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                        <option selected>Select Your Car Model</option>
+                        <option selected value="">Select Your Car Model</option>
                         <option value="1">Toyota Corolla</option>
                         <option value="2">Toyota Avalon</option>
                         <option value="3">Toyota Camry</option>

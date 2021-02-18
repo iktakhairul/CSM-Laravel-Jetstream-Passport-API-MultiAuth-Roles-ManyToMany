@@ -56,10 +56,15 @@
                                                 {{ $user->id }}
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                {{ $user->cars->car_model }}
+                                                @if($user->car_id !== null)
+                                                {{ $user->cars->car_model }} <br>
+                                                @endif
+                                                @if($user->car_id2 !== null)
+                                                        {{ $user->cars->car_model }} <br>
+                                                    @endif
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                {{ $user->created_at }}
+                                                {{ $user->cars->created_at }}
                                             </td>
 
                                 </tr>
@@ -178,7 +183,7 @@
                                                         {{ $user->cars->car_model }}
                                                     </td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                    {{ $user->created_at }}
+                                                    {{ $user->cars->created_at }}
                                                 </td>
                                                 @endif
                                     </tr>
@@ -201,9 +206,19 @@
                     @csrf
 
                     <div class="mt-4">
-                        <x-jet-label for="car_id" value="{{ __('Car Model') }}" />
-                        <select name="car_id" x-model="car_id" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                        <x-jet-label for="car_id2" value="{{ __('Select Your Car Model') }}" />
+                        <select name="car_id2" x-model="car_id2" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
                             <option selected>Select</option>
+                            <option value="1">Toyota Corolla</option>
+                            <option value="2">Toyota Avalon</option>
+                            <option value="3">Toyota Camry</option>
+                            <option value="4">Toyota Prius</option>
+                            <option value="5">Toyota 86</option>
+                            <option value="6">Toyota RAV4</option>
+                            <option value="7">Mercedes-Benz A-Class</option>
+                            <option value="8">Mercedes-Benz A-Class-sedan</option>
+                            <option value="9">Mercedes-Benz CLS-Class</option>
+                            <option value="10">Mercedes-Benz AMG-GT</option>
                             <option value="11">BMW Model 1</option>
                             <option value="12">BMW Model 2</option>
                             <option value="13">BMW Model 3</option>

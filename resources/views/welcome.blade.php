@@ -25,7 +25,7 @@
     <div class="relative flex items-top justify-center min-h-screen bg-gray-150 dark:bg-gray-900 sm:items-center sm:pt-0">
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
             <div class="img-fluid flex justify-center pt-8 sm:justify-start sm:pt-0" style="position: relative; top: 0; left: 0;">
-                <img class="rounded img-fluid" src="car.jpg" alt="Reformed Tech" style="position: relative; top: 0; left: 0;">
+                <img class="img-fluid" src="car.jpg" alt="Reformed Tech" style="position: relative; top: 0; left: 0;">
             </div>
 
 

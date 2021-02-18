@@ -31,9 +31,9 @@ class EmployeeController extends Controller
             'email' => 'required|email:rfc,dns',
             'password' => 'required|min:8',
             'role_id' => 'required|integer',
-            'car_model' => 'required',
-            'user_address' => 'required',
-            'user_phone_number' => 'required',
+            'brand_id' => 'required',
+//            'user_address' => 'required',
+//            'user_phone_number' => 'required',
 
         ]);
 
@@ -42,9 +42,9 @@ class EmployeeController extends Controller
         $users->email = request('email');
         $users->password = request('password');
         $users->role_id = request('role_id');
-        $users->car_model = request('car_model');
-        $users->user_address = request('user_address');
-        $users->user_phone_number = request('user_phone_number');
+        $users->brand_id = request('brand_id');
+//        $users->user_address = request('user_address');
+//        $users->user_phone_number = request('user_phone_number');
         $users->save();
         return back();
     }

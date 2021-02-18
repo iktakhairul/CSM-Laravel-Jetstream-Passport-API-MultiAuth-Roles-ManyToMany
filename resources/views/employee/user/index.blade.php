@@ -48,8 +48,8 @@
                                             <div class="text-sm text-gray-900">{{ $user->user_phone_number }}</div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            <div class="text-sm text-gray-900">{{ $user->car_model }}</div>
-                                            <div class="text-sm font-medium text-gray-900">{{ $user->updated_at }}</div>
+                                            <div class="text-sm text-gray-900">{{ $user->cars->car_model }}</div>
+                                            <div class="text-sm font-medium text-gray-900">{{ $user->cars->updated_at }}</div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                             {{ $user->id }} ({{$user->role->name}})
@@ -80,78 +80,78 @@
                 </h2>
             </div>
         </div>
-        <x-jet-authentication-card>
-            <x-slot name="logo">
-                <x-jet-authentication-card-logo />
-            </x-slot>
+        <div class="mx-auto pb-6 bg-gray-100 ">
+            <x-jet-authentication-card>
+                <x-slot name="logo">
+                </x-slot>
 
-            <x-jet-validation-errors class="mb-4" />
+                <x-jet-validation-errors class="mb-4" />
 
-            <form method="POST" action="{{ route('employee.user.index') }}" x-data="{role_id: 3}">
-                @csrf
+                <form method="POST" action="{{ route('employee.user.index') }}" x-data="{role_id: 3}">
+                    @csrf
 
-                <div>
-                    <x-jet-label for="name" value="{{ __('Name') }}" />
-                    <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-                </div>
+                    <div>
+                        <x-jet-label for="name" value="{{ __('Name') }}" />
+                        <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                    </div>
 
-                <div class="mt-4">
-                    <x-jet-label for="email" value="{{ __('Email') }}" />
-                    <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-                </div>
+                    <div class="mt-4">
+                        <x-jet-label for="email" value="{{ __('Email') }}" />
+                        <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+                    </div>
 
-                <div class="mt-4">
-                    <x-jet-label for="password" value="{{ __('Password') }}" />
-                    <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-                </div>
+                    <div class="mt-4">
+                        <x-jet-label for="password" value="{{ __('Password') }}" />
+                        <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+                    </div>
 
-                <div class="mt-4">
-                    <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                    <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
-                </div>
+                    <div class="mt-4">
+                        <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
+                        <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+                    </div>
 
-                <div class="mt-4">
-                    <x-jet-label for="role_id" value="{{ __('Register as:') }}" />
-                    <select name="role_id" x-model="role_id" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                        <option selected>Select</option>
-                        <option value="3">User</option>
-                    </select>
-                </div>
-                <div class="mt-4">
-                    <x-jet-label for="car_model" value="{{ __('Car Model (Optional)') }}" />
-                    <select name="car_model" x-model="car_model" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                        <option selected>Select Your Car Model</option>
-                        <option>Toyota Avalon</option>
-                        <option>Toyota Corolla</option>
-                        <option>Toyota Camry</option>
-                        <option>Toyota Prius</option>
-                        <option>Toyota 86</option>
-                        <option>Toyota RAV4</option>
-                        <option>Mercedes-Benz A-Class</option>
-                        <option>Mercedes-Benz A-Class-sedan</option>
-                        <option>Mercedes-Benz CLS-Class</option>
-                        <option>Mercedes-Benz AMG-GT</option>
-                    </select>
-                </div>
+                    <div class="mt-4">
+                        <x-jet-label for="role_id" value="{{ __('Register as:') }}" />
+                        <select name="role_id" x-model="role_id" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                            <option selected>Select</option>
+                            <option value="3">User</option>
+                        </select>
+                    </div>
+                    <div class="mt-4">
+                        <x-jet-label for="car_id" value="{{ __('Car Model (Optional)') }}" />
+                        <select name="car_id" x-model="car_id" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                            <option value="" selected>Select Your Car Model</option>
+                            <option value="1">Toyota Avalon</option>
+                            <option value="2">Toyota Corolla</option>
+                            <option value="3">Toyota Camry</option>
+                            <option value="4">Toyota Prius</option>
+                            <option value="5">Toyota 86</option>
+                            <option value="6">Toyota RAV4</option>
+                            <option value="7">Mercedes-Benz A-Class</option>
+                            <option value="8">Mercedes-Benz A-Class-sedan</option>
+                            <option value="9">Mercedes-Benz CLS-Class</option>
+                            <option value="10">Mercedes-Benz AMG-GT</option>
+                        </select>
+                    </div>
 
-                <div class="mt-4" x-show="role_id == 3">
-                    <x-jet-label for="user_address" value="{{ __('Address') }}" />
-                    <x-jet-input id="user_address" class="block mt-1 w-full" type="text" :value="old('user_address')" name="user_address" />
-                </div>
+                    <div class="mt-4" x-show="role_id == 3">
+                        <x-jet-label for="user_address" value="{{ __('Address') }}" />
+                        <x-jet-input id="user_address" class="block mt-1 w-full" type="text" :value="old('user_address')" name="user_address" />
+                    </div>
 
-                <div class="mt-4" x-show="role_id == 3">
-                    <x-jet-label for="user_phone_number" value="{{ __('Phone Number') }}" />
-                    <x-jet-input id="user_phone_number" class="block mt-1 w-full" type="text" :value="old('user_phone_number')" name="user_phone_number" />
-                </div>
+                    <div class="mt-4" x-show="role_id == 3">
+                        <x-jet-label for="user_phone_number" value="{{ __('Phone Number') }}" />
+                        <x-jet-input id="user_phone_number" class="block mt-1 w-full" type="text" :value="old('user_phone_number')" name="user_phone_number" />
+                    </div>
 
-                <div class="flex items-center justify-end mt-4">
+                    <div class="flex items-center justify-end mt-4">
 
-                    <x-jet-button class="ml-4">
-                        {{ __('Register') }}
-                    </x-jet-button>
-                </div>
-            </form>
-        </x-jet-authentication-card>
-
+                        <x-jet-button class="ml-4">
+                            {{ __('Register') }}
+                        </x-jet-button>
+                    </div>
+                </form>
+            </x-jet-authentication-card>
+        </div>
     </div>
 </x-employee-layout>

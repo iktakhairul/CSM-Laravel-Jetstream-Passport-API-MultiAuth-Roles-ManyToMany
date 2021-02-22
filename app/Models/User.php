@@ -66,7 +66,6 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
 
-    public $timestamps =false;
 
     /**
      * The attributes that are mass assignable.
@@ -119,8 +118,7 @@ class User extends Authenticatable
 
     public function brands(){
 
-        return $this->belongsToMany(Brand::class, 'ownerships',
-            'user_id', 'brand_id');
+        return $this->belongsToMany(Brand::class, 'ownerships')->withTimestamps();
     }
 
 }

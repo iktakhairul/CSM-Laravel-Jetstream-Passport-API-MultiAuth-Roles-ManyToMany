@@ -8,12 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Brand extends Model
 {
     use HasFactory;
-    protected $fillable = ['brand_name'];
+    protected $fillable = ['brand_name',];
 
     public function users(){
 
-        return $this->belongsToMany(User::class, 'ownerships',
-            'brand_id', 'user_id');
+        return $this->belongsToMany(User::class, 'ownerships')->withTimestamps();
     }
 
 }

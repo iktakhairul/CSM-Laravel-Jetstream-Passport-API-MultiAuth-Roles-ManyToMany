@@ -18,8 +18,6 @@ Route::get('/', function () {
 });
 Route::view('About','About');
 Route::view('Contact','Contact');
-//Route::get('/register', '\App\Http\Controllers\RegisterCarListController@list');
-
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
@@ -28,8 +26,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::group(['middleware' => 'auth'], function() {
     Route::group(['middleware' => 'role:admin', 'prefix' => 'admin', 'as' => 'admin.'], function() {
         Route::resource('user', \App\Http\Controllers\Admin\AdminController::class);
-        Route::resource('user', \App\Http\Controllers\CarListController::class);
-
+        Route::post('car_panel', 'App\Http\Controllers\Admin\AdminAddBrandController@store')->name('car_panel');
+        Route::get('car_panel', 'App\Http\Controllers\Admin\AdminAddBrandController@index')->name('car_panel');
+        Route::view('About','Admin.About');
     });
 
    Route::group(['middleware' => 'role:employee', 'prefix' => 'employee', 'as' => 'employee.'], function() {
@@ -38,8 +37,10 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::group(['middleware' => 'role:users', 'prefix' => 'users', 'as' => 'users.'], function() {
         Route::resource('user', \App\Http\Controllers\Users\UsersController::class);
+        Route::post('add_brand', 'App\Http\Controllers\Users\AddBrandController@store')->name('add_brand');
+        Route::get('add_brand', 'App\Http\Controllers\Users\AddBrandController@index')->name('add_brand');
     });
-
 });
+
 
 

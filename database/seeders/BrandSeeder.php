@@ -19,6 +19,5 @@ class BrandSeeder extends Seeder
         Brand::create(['brand_name' => 'Tesla']);
         Brand::create(['brand_name' => 'Ford']);
         Brand::create(['brand_name' => 'BMW']);
-
     }
 }

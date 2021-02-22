@@ -47,33 +47,6 @@
                     <x-jet-input id="employee_designation" class="block mt-1 w-full" type="text" :value="old('employee_designation')" name="employee_designation" />
                 </div>
 
-                <div class="mt-4" x-show="role_id == 3">
-                    <x-jet-label for="car_id" value="{{ __('Car Model (Optional)') }}" />
-                    <select name="car_id" x-model="car_id" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                        <option selected value="">Select Your Car Model</option>
-                        <option value="1">Toyota Corolla</option>
-                        <option value="2">Toyota Avalon</option>
-                        <option value="3">Toyota Camry</option>
-                        <option value="4">Toyota Prius</option>
-                        <option value="5">Toyota 86</option>
-                        <option value="6">Toyota RAV4</option>
-                        <option value="7">Mercedes-Benz A-Class</option>
-                        <option value="8">Mercedes-Benz A-Class-sedan</option>
-                        <option value="9">Mercedes-Benz CLS-Class</option>
-                        <option value="10">Mercedes-Benz AMG-GT</option>
-                    </select>
-                </div>
-
-                <div class="mt-4" x-show="role_id == 3">
-                    <x-jet-label for="user_address" value="{{ __('Address') }}" />
-                    <x-jet-input id="user_address" class="block mt-1 w-full" type="text" :value="old('user_address')" name="user_address" />
-                </div>
-
-                <div class="mt-4" x-show="role_id == 3">
-                    <x-jet-label for="user_phone_number" value="{{ __('Phone Number') }}" />
-                    <x-jet-input id="user_phone_number" class="block mt-1 w-full" type="text" :value="old('user_phone_number')" name="user_phone_number" />
-                </div>
-
                 @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                     <div class="mt-4">
                         <x-jet-label for="terms">

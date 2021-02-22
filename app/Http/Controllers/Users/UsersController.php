@@ -3,9 +3,14 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
+use App\Models\ownership;
 use App\Models\Role;
 use App\Models\User;
+use Database\Seeders\OwnershipSeeder;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
 
 class UsersController extends Controller
 {
@@ -17,29 +22,18 @@ class UsersController extends Controller
             abort(403);
         }
 
-        $users = User::with('role')->get();
+        $users = User::with('role', 'brands')->get();
         $roles = Role::select('name')->get();
+        $brands = Brand::all();
+        $ownership = ownership::all();
+
 
         return view('users.user.index', [
             'users' => $users,
             'roles' => $roles,
+            'brands' => $brands,
+            'ownership' => $ownership,
 
         ]);
     }
-
-      // Have to work here
-//    public function store(){
-//
-//        $data = \request()->validate([
-//
-//            'car_id2' => 'required|integer',
-//        ]);
-//
-//        $add_car = new User();
-//        $add_car->car_id2 = request('car_id2');
-//        $add_car->save();
-//        return back();
-//    }
-      //
-
 }

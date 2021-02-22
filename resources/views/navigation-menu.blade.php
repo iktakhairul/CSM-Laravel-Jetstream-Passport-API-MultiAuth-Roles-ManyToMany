@@ -20,7 +20,12 @@
                         <x-jet-nav-link href="{{ route('admin.user.index') }}" :active="request()->routeIs('admin.user.index')">
                             {{ __('Admin Panel') }}
                         </x-jet-nav-link>
-
+                        <x-jet-nav-link href="{{ route('admin.car_panel') }}" :active="request()->routeIs('admin.car_panel')">
+                            {{ __('Brand Panel') }}
+                        </x-jet-nav-link>
+                        <x-jet-nav-link href="About" :active="request()->routeIs('About')">
+                            {{ __('About Us') }}
+                        </x-jet-nav-link>
 
                     @endif
 
@@ -33,6 +38,9 @@
                     @if (auth()->user()->role_id == 3)
                         <x-jet-nav-link href="{{ route('users.user.index') }}" :active="request()->routeIs('users.user.index')">
                             {{ __('Service and Information') }}
+                            <x-jet-nav-link href="{{ route('users.add_brand') }}" :active="request()->routeIs('users.add_brand')">
+                                {{ __('Add Your Brand') }}
+                            </x-jet-nav-link>
                         </x-jet-nav-link>
                     @endif
                 </div>

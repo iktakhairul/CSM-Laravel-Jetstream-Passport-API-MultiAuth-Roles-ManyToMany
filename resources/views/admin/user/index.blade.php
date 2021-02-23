@@ -6,7 +6,6 @@
     </x-slot>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
     <div>
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
             <!-- This example requires Tailwind CSS v2.0+ -->

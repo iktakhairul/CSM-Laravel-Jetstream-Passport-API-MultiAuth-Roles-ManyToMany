@@ -23,8 +23,11 @@
                         <x-jet-nav-link href="{{ route('admin.car_panel') }}" :active="request()->routeIs('admin.car_panel')">
                             {{ __('Brand Panel') }}
                         </x-jet-nav-link>
-                        <x-jet-nav-link href="About" :active="request()->routeIs('About')">
+                        <x-jet-nav-link href="{{ route('admin.about') }}" :active="request()->routeIs('admin.about')">
                             {{ __('About Us') }}
+                        </x-jet-nav-link>
+                        <x-jet-nav-link href="{{ route('admin.contact') }}" :active="request()->routeIs('admin.contact')">
+                            {{ __('Contact Us') }}
                         </x-jet-nav-link>
 
                     @endif
@@ -33,6 +36,12 @@
                         <x-jet-nav-link href="{{ route('employee.user.index') }}" :active="request()->routeIs('employee.user.index')">
                             {{ __('Users') }}
                         </x-jet-nav-link>
+                        <x-jet-nav-link href="{{ route('employee.about') }}" :active="request()->routeIs('employee.about')">
+                            {{ __('About Us') }}
+                        </x-jet-nav-link>
+                        <x-jet-nav-link href="{{ route('employee.contact') }}" :active="request()->routeIs('employee.contact')">
+                            {{ __('Contact Us') }}
+                        </x-jet-nav-link>
                     @endif
 
                     @if (auth()->user()->role_id == 3)
@@ -40,6 +49,12 @@
                             {{ __('Service and Information') }}
                             <x-jet-nav-link href="{{ route('users.add_brand') }}" :active="request()->routeIs('users.add_brand')">
                                 {{ __('Add Your Brand') }}
+                            </x-jet-nav-link>
+                            <x-jet-nav-link href="{{ route('users.about') }}" :active="request()->routeIs('users.about')">
+                                {{ __('About Us') }}
+                            </x-jet-nav-link>
+                            <x-jet-nav-link href="{{ route('users.contact') }}" :active="request()->routeIs('users.contact')">
+                                {{ __('Contact Us') }}
                             </x-jet-nav-link>
                         </x-jet-nav-link>
                     @endif

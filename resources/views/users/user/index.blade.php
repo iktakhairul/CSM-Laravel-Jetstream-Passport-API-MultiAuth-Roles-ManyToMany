@@ -23,7 +23,7 @@
                                         User ID
                                     </th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Car Brand
+                                        Car Model
                                     </th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         User Since
@@ -48,21 +48,19 @@
                                                 {{ $user->id }}
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-
-                                                @foreach($user->brands as $user_brand)
+                                                @foreach($user->carModel as $car)
                                                     <ul>
-                                                        <li>{{ $user_brand ->brand_name }}</li>
+                                                        <li>{{ $car->car_model_name }}</li>
                                                     </ul>
                                                 @endforeach
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                @foreach($user->brands as $user_brand)
+                                                @foreach($user->carModel as $car)
                                                     <ul>
-                                                        <li>{{ $user_brand ->created_at }}</li>
+                                                        <li>{{ $car->created_at }}</li>
                                                     </ul>
                                                 @endforeach
                                             </td>
-
                                 </tr>
                                 @endif
                                 @endforeach
@@ -94,7 +92,7 @@
                                         Name
                                     </th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Car Brand
+                                        Car Model
                                     </th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         User Since
@@ -104,7 +102,7 @@
                                 <tbody class="bg-white divide-y divide-gray-200">
                                 <tr>
                                     @foreach ($users as $user)
-                                        @if($user->role_id === 3 && \Illuminate\Support\Facades\Auth::user()->brand_id == $user->brand_id)
+                                        @if($user->role_id === 3 && \Illuminate\Support\Facades\Auth::user()->brands == $user->brand_id)
                                             @if($user->role_id === 3 && \Illuminate\Support\Facades\Auth::user()->id == $user->id)
                                             @else
                                                 <td class="px-6 py-4 whitespace-nowrap">
@@ -113,16 +111,16 @@
                                                     </div>
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                    @foreach($user->brands as $user_brand)
+                                                    @foreach($user->carModel as $car)
                                                         <ul>
-                                                            <li>{{ $user_brand ->brand_name }}</li>
+                                                            <li>{{ $car->car_model_name }}</li>
                                                         </ul>
                                                     @endforeach
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                    @foreach($user->brands as $user_brand)
+                                                    @foreach($user->carModel as $car)
                                                         <ul>
-                                                            <li>{{ $user_brand ->created_at }}</li>
+                                                            <li>{{ $car->created_at }}</li>
                                                         </ul>
                                                     @endforeach
                                                 </td>

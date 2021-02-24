@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\CarList;
+use App\Models\CarModel;
+use App\Models\Ownership;
 use App\Models\Role;
 use App\Models\User;
 use http\Env\Request;
@@ -19,12 +21,17 @@ class AdminController extends Controller
             abort(403);
         }
 
-        $users = User::with('role')->get();
+        $users = User::with('role', 'carModel')->get();
         $roles = Role::select('name')->get();
+        $car_model = CarModel::with('brand')->get();
+        $ownership = Ownership::all();
+
 
         return view('admin.user.index', [
             'users' => $users,
             'roles' => $roles,
+            'car_model' => $car_model,
+            'ownership' => $ownership
         ]);
     }
 

@@ -10,9 +10,10 @@ class Brand extends Model
     use HasFactory;
     protected $fillable = ['brand_name',];
 
-    public function users(){
+    public function carmodel(){
 
-        return $this->belongsToMany(User::class, 'ownerships')->withTimestamps();
+        return $this->hasMany(CarModel::class);
     }
+
 
 }

@@ -35,7 +35,7 @@
         @if (session('error'))
             <div class="alert alert-danger">{{ session('error') }}</div>
         @endif
-        <form method="POST" action="{{ route('users.add_brand') }}" x-data="{role_id: 3}">
+        <form method="POST" action="{{ route('users.add_brand') }}" x-data="{role_id: 0}">
             @csrf
             <div class="row-auto form-check-input">
                 @foreach ($users as $user)
@@ -48,21 +48,34 @@
                 @endforeach
             </div>
             <div class="container">
-            @foreach($brands as $brand)
-            <div class="form-check">
-                <input class="row-auto form-check-input" type="checkbox" value="{{ $brand->id }}" id="brand_id" name="brand_id">
-                <div class="card">
-                    <div class="card-header row-auto">
-                        {{$brand->brand_name}}
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">Car Brand Details.</p>
-                    </div>
-                </div>
-            </div>
+{{--                <div class="mt-4">--}}
+{{--                    <x-jet-label for="" value="{{ __('Select New Brand:') }}" />--}}
+{{--                    <select name="" x-model="" required class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">--}}
+{{--                        <option selected>Select</option>--}}
+{{--                        @foreach( $brands as $brand)--}}
+{{--                            <option value="{{ $brand->id }}">{{ $brand->brand_name }}</option>--}}
+{{--                        @endforeach--}}
+{{--                    </select>--}}
+{{--                </div>--}}
                 <br>
-            @endforeach
+                @foreach($car_model as $car)
+
+                        <div class="form-check">
+                            <input class="row-auto form-check-input" type="checkbox" value="{{ $car->id }}" id="car_model_id" name="car_model_id">
+                            <div class="card">
+                                <div class="card-header row-auto">
+                                    {{ $car->brand->brand_name }}
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $car->car_model_name }}</h5>
+                                    <p class="card-text">Car Brand Details.</p>
+                                </div>
+                            </div>
+                        </div>
+                            <br>
+
+                @endforeach
+
                 <div class="flex items-center justify-end mt-4">
                     <x-jet-button class="ml-4">
                         {{ __('Add Car') }}

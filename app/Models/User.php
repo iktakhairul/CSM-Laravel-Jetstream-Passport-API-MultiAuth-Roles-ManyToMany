@@ -116,9 +116,9 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
-    public function brands(){
+    public function carModel(){
 
-        return $this->belongsToMany(Brand::class, 'ownerships')->withTimestamps();
+        return $this->belongsToMany(CarModel::class, 'ownerships', 'user_id', 'car_model_id')->withTimestamps();
     }
 
 }

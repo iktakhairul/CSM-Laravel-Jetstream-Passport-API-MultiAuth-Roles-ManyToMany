@@ -103,9 +103,9 @@
                                                 </div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap">
-                                                @foreach($user->brands as $user_brand)
+                                                @foreach($user->carModel as $car)
                                                     <ul>
-                                                        <li>{{ $user_brand ->brand_name }}</li>
+                                                        <li>{{ $car->car_model_name }}</li>
                                                     </ul>
                                                 @endforeach
                                             </td>

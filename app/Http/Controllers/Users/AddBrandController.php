@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Users;
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
+use App\Models\CarModel;
 use App\Models\ownership;
 use App\Models\Role;
 use App\Models\User;
@@ -23,36 +24,33 @@ class AddBrandController extends Controller
         $brands = Brand::all();
         $ownership = ownership::all();
         $roles = Role::select('name')->get();
+        $car_model = CarModel::with('brand')->get();
 
         return view('users.add_brand', [
             'users' => $users,
             'roles' => $roles,
             'brands' => $brands,
             'ownership' => $ownership,
+            'car_model' => $car_model
 
         ]);
     }
 
     public function store(){
 
-        // $user = User::first();
-        // $user->brands()->sync([1,2,3,4,5]);
-
         $data = \request()->validate([
 
             'user_id' => 'required|integer',
-            'brand_id' => ['required', 'integer',
-
-            ],
+            'car_model_id' => ['required', 'integer'],
 
         ]);
 
-        $check =  ownership::where('user_id', '=', request('user_id'))->where('brand_id', '=', request('brand_id'))->first();
+        $check =  Ownership::where('user_id', '=', request('user_id'))->where('car_model_id', '=', request('car_model_id'))->first();
 
         if($check == null){
 
             $user = User::find(request('user_id'));
-            $user->brands()->syncWithoutDetaching(request('brand_id'));
+            $user->carmodel()->syncWithoutDetaching(request('car_model_id'));
 
         }else{
 

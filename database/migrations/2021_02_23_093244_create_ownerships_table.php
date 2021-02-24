@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddRolesFieldsToUsersTable extends Migration
+class CreateOwnershipsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class AddRolesFieldsToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('role_id')->constrained();
-
+        Schema::create('ownerships', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('car_model_id')->constrained();
+            $table->timestamps();
         });
     }
 
@@ -26,9 +28,6 @@ class AddRolesFieldsToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-
-            Schema::drop('users');
-        });
+        Schema::dropIfExists('ownerships');
     }
 }

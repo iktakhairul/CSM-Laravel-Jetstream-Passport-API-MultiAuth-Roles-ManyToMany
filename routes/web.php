@@ -30,7 +30,8 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('car_panel', 'App\Http\Controllers\Admin\AdminAddBrandController@index')->name('car_panel');
         Route::get('about', 'App\Http\Controllers\Admin\AdminAboutContactController@index')->name('about');
         Route::get('contact', 'App\Http\Controllers\Admin\AdminAboutContactController@contact')->name('contact');
-
+        Route::post('add_car_model', 'App\Http\Controllers\Admin\AdminAddCarModelController@store')->name('add_car_model');
+        Route::get('add_car_model', 'App\Http\Controllers\Admin\AdminAddCarModelController@index')->name('add_car_model');
     });
 
    Route::group(['middleware' => 'role:employee', 'prefix' => 'employee', 'as' => 'employee.'], function() {

@@ -15,7 +15,7 @@ class EmployeeController extends Controller
             abort(403);
         }
 
-        $users = User::with('role')->get();
+        $users = User::with('role', 'carModel')->get();
         $roles = Role::select('name')->get();
 
         return view('employee.user.index', [

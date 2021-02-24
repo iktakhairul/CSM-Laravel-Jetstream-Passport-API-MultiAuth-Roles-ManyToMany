@@ -23,6 +23,9 @@
                         <x-jet-nav-link href="{{ route('admin.car_panel') }}" :active="request()->routeIs('admin.car_panel')">
                             {{ __('Brand Panel') }}
                         </x-jet-nav-link>
+                        <x-jet-nav-link href="{{ route('admin.add_car_model') }}" :active="request()->routeIs('admin.add_car_model')">
+                            {{ __('Add Car Model') }}
+                        </x-jet-nav-link>
                         <x-jet-nav-link href="{{ route('admin.about') }}" :active="request()->routeIs('admin.about')">
                             {{ __('About Us') }}
                         </x-jet-nav-link>
@@ -150,7 +153,52 @@
                             @endif
 
                             <div class="border-t border-gray-100"></div>
+                            <x-jet-dropdown-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                                {{ __('Dashboard') }}
+                            </x-jet-dropdown-link>
 
+                            @if(auth()->user()->role_id == 1)
+                                <x-jet-dropdown-link href="{{ route('admin.user.index') }}" :active="request()->routeIs('admin.user.index')">
+                                    {{ __('Admin Panel') }}
+                                </x-jet-dropdown-link>
+                                <x-jet-dropdown-link href="{{ route('admin.car_panel') }}" :active="request()->routeIs('admin.car_panel')">
+                                    {{ __('Brand Panel') }}
+                                </x-jet-dropdown-link>
+                                <x-jet-dropdown-link href="{{ route('admin.about') }}" :active="request()->routeIs('admin.about')">
+                                    {{ __('About Us') }}
+                                </x-jet-dropdown-link>
+                                <x-jet-dropdown-link href="{{ route('admin.contact') }}" :active="request()->routeIs('admin.contact')">
+                                    {{ __('Contact Us') }}
+                                </x-jet-dropdown-link>
+
+                            @endif
+
+                            @if(auth()->user()->role_id == 2)
+                                <x-jet-dropdown-link href="{{ route('employee.user.index') }}" :active="request()->routeIs('employee.user.index')">
+                                    {{ __('Users') }}
+                                </x-jet-dropdown-link>
+                                <x-jet-dropdown-link href="{{ route('employee.about') }}" :active="request()->routeIs('employee.about')">
+                                    {{ __('About Us') }}
+                                </x-jet-dropdown-link>
+                                <x-jet-dropdown-link href="{{ route('employee.contact') }}" :active="request()->routeIs('employee.contact')">
+                                    {{ __('Contact Us') }}
+                                </x-jet-dropdown-link>
+                            @endif
+
+                            @if (auth()->user()->role_id == 3)
+                                <x-jet-dropdown-link href="{{ route('users.user.index') }}" :active="request()->routeIs('users.user.index')">
+                                    {{ __('Service and Information') }}
+                                </x-jet-dropdown-link>
+                                <x-jet-dropdown-link href="{{ route('users.add_brand') }}" :active="request()->routeIs('users.add_brand')">
+                                    {{ __('Add Your Brand') }}
+                                </x-jet-dropdown-link>
+                                <x-jet-dropdown-link href="{{ route('users.about') }}" :active="request()->routeIs('users.about')">
+                                    {{ __('About Us') }}
+                                </x-jet-dropdown-link>
+                                <x-jet-dropdown-link href="{{ route('users.contact') }}" :active="request()->routeIs('users.contact')">
+                                    {{ __('Contact Us') }}
+                                </x-jet-dropdown-link>
+                        @endif
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf

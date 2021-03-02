@@ -8,7 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
-use Laravel\Sanctum\HasApiTokens;
+use Laravel\Passport\HasApiTokens;
+
 
 /**
  * App\Models\User
@@ -60,11 +61,11 @@ use Laravel\Sanctum\HasApiTokens;
  */
 class User extends Authenticatable
 {
-    use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    use HasApiTokens;
 
 
     /**
@@ -111,14 +112,13 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function role(){
-
+    public function role()
+    {
         return $this->belongsTo(Role::class);
     }
 
-    public function carModel(){
-
+    public function carModel()
+    {
         return $this->belongsToMany(CarModel::class, 'ownerships', 'user_id', 'car_model_id')->withTimestamps();
     }
-
 }

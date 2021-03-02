@@ -8,7 +8,7 @@
     <div>
         <div class="max-w-4xl mx-auto py-10 sm:px-6 lg:px-8">
             <div class="mt-5 md:mt-0 md:col-span-2">
-                <form method="post" action="{{ route('employee.user.update', $user->id) }}">
+                <form method="post" action="{{ route('admin.user.update', $user->id) }}">
                     @csrf
                     @method('put')
                     <div class="shadow overflow-hidden sm:rounded-md">
@@ -27,6 +27,20 @@
                                    value="{{ old('email', $user->email) }}" />
                             @error('email')
                                 <p class="text-sm text-red-600">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div class="px-4 py-5 bg-white sm:p-6">
+                            <label for="role_id" class="block font-medium text-sm text-gray-700">Roles</label>
+                            <select name="role_id" x-model="role_id" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                                @foreach($role as $id => $role_id)
+                                    <option value="{{ $id }}"{{ in_array($id, old('role', $user->role->pluck('id')->toArray())) ? ' selected' : '' }}>
+                                        {{ $role_id }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('role')
+                            <p class="text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
 

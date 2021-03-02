@@ -43,8 +43,8 @@
                                                 {{ $user->id }} ({{$user->role->name}})
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                <a href="{{ route('users.user.edit', $user->id) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                                <form class="inline-block" action="{{ route('users.user.edit', $user->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
+                                                <a href="{{ route('admin.user.edit', $user->id) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                                <form class="inline-block" action="{{ route('admin.user.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
                                                     <input type="hidden" name="_method" value="DELETE">
                                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                     <input type="submit" class="text-red-600 hover:text-red-900 mb-2 mr-2" value="Delete">
@@ -109,21 +109,23 @@
                                                     </ul>
                                                 @endforeach
                                             </td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                {{ $user->id }} ({{$user->role->name}})
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                                    {{ $user->id }} ({{$user->role->name}})
+                                                </span>
                                             </td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                <a href="{{ route('users.user.edit', $user->id) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                                <form class="inline-block" action="{{ route('users.user.edit', $user->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                                <a href="{{ route('admin.user.edit', $user->id) }}" class="text-indigo-600 hover:text-indigo-900 mb-2 mr-2">Edit</a>
+                                                <form class="inline-block" action="{{ route('admin.user.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
                                                     <input type="hidden" name="_method" value="DELETE">
                                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                     <input type="submit" class="text-red-600 hover:text-red-900 mb-2 mr-2" value="Delete">
                                                 </form>
                                             </td>
                                 </tr>
-                                @endif
+                                        @endif
                                 @endforeach
-                                </tbody>
+                                    </tbody>
                             </table>
                         </div>
                     </div>
@@ -173,23 +175,9 @@
                         <select name="role_id" x-model="role_id" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
                             <option selected>Select</option>
                             <option value="2">Employee</option>
+                            <option value="3">User</option>
                         </select>
                     </div>
-
-{{--                    <div class="mt-4" x-show="role_id == 2">--}}
-{{--                        <x-jet-label for="employee_designation" value="{{ __('Designation') }}" />--}}
-{{--                        <x-jet-input id="employee_designation" class="block mt-1 w-full" type="text" :value="old('employee_designation')" name="employee_designation" />--}}
-{{--                    </div>--}}
-
-{{--                    <div class="mt-4" x-show="role_id == 2">--}}
-{{--                        <x-jet-label for="user_address" value="{{ __('Address') }}" />--}}
-{{--                        <x-jet-input id="user_address" class="block mt-1 w-full" type="text" :value="old('user_address')" name="user_address" />--}}
-{{--                    </div>--}}
-
-{{--                    <div class="mt-4" x-show="role_id == 2">--}}
-{{--                        <x-jet-label for="user_phone_number" value="{{ __('Phone Number') }}" />--}}
-{{--                        <x-jet-input id="user_phone_number" class="block mt-1 w-full" type="text" :value="old('user_phone_number')" name="user_phone_number" />--}}
-{{--                    </div>--}}
 
                     <div class="flex items-center justify-end mt-4">
 

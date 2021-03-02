@@ -38,7 +38,6 @@ Route::group(['middleware' => 'auth'], function() {
        Route::resource('user', \App\Http\Controllers\Employee\EmployeeController::class);
        Route::get('about', 'App\Http\Controllers\Employee\EmployeeAboutContactController@index')->name('about');
        Route::get('contact', 'App\Http\Controllers\Employee\EmployeeAboutContactController@contact')->name('contact');
-
    });
 
     Route::group(['middleware' => 'role:users', 'prefix' => 'users', 'as' => 'users.'], function() {
@@ -47,7 +46,6 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('add_brand', 'App\Http\Controllers\Users\AddBrandController@index')->name('add_brand');
         Route::get('about', 'App\Http\Controllers\Users\UsersAboutContactController@index')->name('about');
         Route::get('contact', 'App\Http\Controllers\Users\UsersAboutContactController@contact')->name('contact');
-
     });
 });
 

@@ -15,8 +15,8 @@ class CreateOwnershipsTable extends Migration
     {
         Schema::create('ownerships', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('car_model_id')->constrained();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('car_model_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

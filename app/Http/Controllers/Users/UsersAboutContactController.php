@@ -9,7 +9,6 @@ class UsersAboutContactController extends Controller
 {
     public function index()
     {
-
         if (Gate::denies('users_view')) {
             abort(403);
         }
@@ -19,10 +18,10 @@ class UsersAboutContactController extends Controller
 
     public function contact()
     {
-
         if (Gate::denies('users_view')) {
             abort(403);
         }
+
         return view('users.contact');
     }
 }

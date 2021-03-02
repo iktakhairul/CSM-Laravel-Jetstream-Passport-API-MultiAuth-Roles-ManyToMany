@@ -13,51 +13,38 @@ use Illuminate\Validation\Rule;
 
 class AddBrandController extends Controller
 {
-
     public function index()
     {
         if (Gate::denies('users_view')) {
             abort(403);
         }
-
         $users = User::with('role')->get();
-        $brands = Brand::all();
-        $ownership = ownership::all();
-        $roles = Role::select('name')->get();
         $car_model = CarModel::with('brand')->get();
 
         return view('users.add_brand', [
             'users' => $users,
-            'roles' => $roles,
-            'brands' => $brands,
-            'ownership' => $ownership,
             'car_model' => $car_model
 
         ]);
     }
 
-    public function store(){
-
+    public function store()
+    {
         $data = \request()->validate([
-
             'user_id' => 'required|integer',
             'car_model_id' => ['required', 'integer'],
 
         ]);
-
         $check =  Ownership::where('user_id', '=', request('user_id'))->where('car_model_id', '=', request('car_model_id'))->first();
 
-        if($check == null){
-
+        if($check == null) {
             $user = User::find(request('user_id'));
             $user->carmodel()->syncWithoutDetaching(request('car_model_id'));
-
-        }else{
+        }else {
 
             return back()->with('danger', 'You already own this Brand!');
         }
 
         return back()->with('success', 'Brand Added successfully.');
     }
-
 }

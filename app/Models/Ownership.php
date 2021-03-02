@@ -8,5 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Ownership extends Model
 {
     use HasFactory;
+
     protected $fillable = ['user_id', 'car_model_id'];
 }

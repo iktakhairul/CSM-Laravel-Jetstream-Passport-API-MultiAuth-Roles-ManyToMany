@@ -3,7 +3,6 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
-                <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
                         <x-jet-application-mark class="block h-9 w-auto" />
@@ -163,6 +162,9 @@
                                 </x-jet-dropdown-link>
                                 <x-jet-dropdown-link href="{{ route('admin.car_panel') }}" :active="request()->routeIs('admin.car_panel')">
                                     {{ __('Brand Panel') }}
+                                </x-jet-dropdown-link>
+                                <x-jet-dropdown-link href="{{ route('admin.add_car_model') }}" :active="request()->routeIs('admin.add_car_model')">
+                                    {{ __('Add Car Model') }}
                                 </x-jet-dropdown-link>
                                 <x-jet-dropdown-link href="{{ route('admin.about') }}" :active="request()->routeIs('admin.about')">
                                     {{ __('About Us') }}

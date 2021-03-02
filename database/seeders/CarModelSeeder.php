@@ -15,6 +15,5 @@ class CarModelSeeder extends Seeder
     public function run()
     {
         CarModel::create(['car_model_name' => 'Toyota Corolla', 'brand_id' => 1]);
-
     }
 }

@@ -12,7 +12,6 @@ class AdminAboutContactController extends Controller
 {
     public function index()
     {
-
         if (Gate::denies('manage_employee')) {
             abort(403);
         }
@@ -22,10 +21,10 @@ class AdminAboutContactController extends Controller
 
     public function contact()
     {
-
         if (Gate::denies('manage_employee')) {
             abort(403);
         }
+
         return view('admin.contact');
     }
 }

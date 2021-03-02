@@ -37,7 +37,6 @@
                     <x-jet-label for="role_id" value="{{ __('Register as:') }}" />
                     <select name="role_id" x-model="role_id" required class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
                         <option selected>Select</option>
-                        <option value="2">Employee</option>
                         <option value="3">User</option>
                     </select>
                 </div>

@@ -14,42 +14,35 @@ class AdminAddCarModelController extends Controller
         if (Gate::denies('manage_employee')) {
             abort(403);
         }
-
         $brands = Brand::all();
-        $car_model = CarModel::all();
+        $car_model = CarModel::with('brand')->get();
 
         return view('admin.add_car_model', [
-
             'brands' => $brands,
             'car_model' => $car_model,
         ]);
     }
 
-    public function store(){
-
+    public function store()
+    {
         $data = \request()->validate([
-
             'brand_id' => 'required|integer',
             'car_model_name' => 'required|string',
 
         ]);
-
-//unique:App\Models\CarModel,car_model_name
-
         $check = CarModel::where('brand_id', '=', request('brand_id'))->where('car_model_name', '=', request('car_model_name'))->first();
 
-        if($check == null){
-
+        if($check == null) {
             $car_model = new CarModel();
             $car_model->car_model_name = request('car_model_name');
             $car_model->brand_id = request('brand_id');
             $car_model -> save();
+
             return back()->with('success', 'New Brand Model Added successfully.');
 
-        }else{
+        }else {
 
             return back()->with('danger', 'You already own this Brand!');
         }
-
     }
 }

@@ -14,8 +14,7 @@ class AddRolesFieldsToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('role_id')->constrained();
-
+            $table->foreignId('role_id')->constrained()->onDelete('cascade');
         });
     }
 
@@ -26,9 +25,6 @@ class AddRolesFieldsToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-
-            Schema::drop('users');
-        });
+        Schema::dropIfExists('users');
     }
 }

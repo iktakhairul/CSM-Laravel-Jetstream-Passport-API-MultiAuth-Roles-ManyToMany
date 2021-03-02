@@ -7,7 +7,6 @@
 
     <div>
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
-            <!-- This example requires Tailwind CSS v2.0+ -->
             <div class="flex flex-col">
                 <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -51,8 +50,8 @@
                                             {{ $user->id }} ({{$user->role->name}})
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <a href="{{ route('users.user.edit', $user->id) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                            <form class="inline-block" action="{{ route('users.user.edit', $user->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
+                                            <a href="{{ route('employee.user.edit', $user->id) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                            <form class="inline-block" action="{{ route('employee.user.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                 <input type="submit" class="text-red-600 hover:text-red-900 mb-2 mr-2" value="Delete">

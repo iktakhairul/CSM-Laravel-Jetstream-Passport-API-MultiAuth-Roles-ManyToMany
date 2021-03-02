@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
 
-class UpdateUserRequest extends FormRequest
+class UserUpdateRequest extends FormRequest
 {
     public function rules()
     {
@@ -23,6 +23,6 @@ class UpdateUserRequest extends FormRequest
 
     public function authorize()
     {
-        return Gate::allows('manage_users');
+        return Gate::allows('users_view');
     }
 }

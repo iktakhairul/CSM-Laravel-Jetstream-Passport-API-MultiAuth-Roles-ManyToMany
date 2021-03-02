@@ -122,7 +122,7 @@
         <div class="bg-white shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                    {{ __('Car Brand') }}
+                    {{ __('Car Brand and Model') }}
                 </h2>
             </div>
         </div>
@@ -139,7 +139,10 @@
                                             Car Brand
                                         </th>
                                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Brand Id
+                                            Car Model
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Brand Id - Car Model Id
                                         </th>
                                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Date Added
@@ -148,20 +151,25 @@
                                     </thead>
                                     <tbody class="bg-white divide-y divide-gray-200">
                                     <tr>
-                                        @foreach ($brands as $brand)
+                                        @foreach ($car_model as $cars)
                                             <td class="px-6 py-4 whitespace-nowrap">
                                                 <div class="ml-4">
-                                                    <div class="text-sm font-medium text-gray-900">{{ $brand->brand_name }}</div>
+                                                    <div class="text-sm font-medium text-gray-900">{{ $cars->brand->brand_name }}</div>
+                                                </div>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                <div class="ml-4">
+                                                    <div class="text-sm font-medium text-gray-900">{{ $cars->car_model_name }}</div>
                                                 </div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                                 <div class="ml-4">
-                                                    <div class="text-sm font-medium text-gray-900">{{ $brand->id }}</div>
+                                                    <div class="text-sm font-medium text-gray-900">{{ $cars->brand->id }} - {{ $cars->id }}</div>
                                                 </div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                                 <div class="ml-4">
-                                                    <div class="text-sm font-medium text-gray-900">{{ $brand->created_at }}</div>
+                                                    <div class="text-sm font-medium text-gray-900">{{ $cars->created_at }}</div>
                                                 </div>
                                             </td>
 

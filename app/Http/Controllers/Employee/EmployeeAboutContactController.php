@@ -9,7 +9,6 @@ class EmployeeAboutContactController extends Controller
 {
     public function index()
     {
-
         if (Gate::denies('manage_users')) {
             abort(403);
         }
@@ -19,10 +18,10 @@ class EmployeeAboutContactController extends Controller
 
     public function contact()
     {
-
         if (Gate::denies('manage_users')) {
             abort(403);
         }
+
         return view('employee.contact');
     }
 }

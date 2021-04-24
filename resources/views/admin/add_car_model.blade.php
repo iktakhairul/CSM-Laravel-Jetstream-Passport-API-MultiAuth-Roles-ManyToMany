@@ -44,6 +44,9 @@
                             <option value="{{ $brand->id }}">{{ $brand->brand_name }}</option>
                         @endforeach
                     </select>
+                    @if($errors->first('brand_id'))
+                        <div class="alert alert-danger">{{ Session::get('danger', 'Select Brand Please!') }}</div>
+                    @endif
                 </div>
                 <br>
                 <div class="form-check">
